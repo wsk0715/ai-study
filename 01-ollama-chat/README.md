@@ -23,10 +23,14 @@
 
 ## 결과
 
-| 모델 | VRAM 사용 | `ollama ps` PROCESSOR | eval rate (tokens/s) |
-|---|---|---|---|
-| qwen3:8b-q4_K_M | | | |
-| qwen3:8b-q8_0 | | | |
+전원 연결 상태, 질문 3개의 eval rate. 모델마다 예열 1회 뒤 측정했다. GPU 메모리는 8,188MiB다.
+
+| 모델 | 파일 크기 | 적재 크기 (`ollama ps`) | VRAM 사용 | PROCESSOR | eval rate (tokens/s) |
+|---|---|---|---|---|---|
+| qwen3:8b-q4_K_M | 5.2GB | 5.6GB | 5,497MiB | 100% GPU | 46.60, 45.94, 45.76 |
+| qwen3:8b-q8_0 | 8.9GB | 9.6GB | 6,125MiB | 35%/65% CPU/GPU | 12.52, 13.65, 13.61 |
+
+배터리 상태에서 같은 측정을 했을 때 Q4는 12.85, 16.01 tokens/s였다. 노트북 GPU는 배터리에서 전력이 제한되므로 속도 측정은 전원을 연결하고 한다.
 
 ## 배운 점
 
