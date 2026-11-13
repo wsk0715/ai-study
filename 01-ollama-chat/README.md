@@ -10,20 +10,23 @@
 
 1. Ollama 설치: `winget install Ollama.Ollama` 후 터미널을 새로 연다.
 2. 다른 터미널에서 VRAM 관찰: `nvidia-smi -l 1`
-3. Q4 모델 실행: `ollama run qwen2.5-coder:7b --verbose`
+3. Q4 모델 실행: `ollama run qwen3:8b-q4_K_M --verbose --think=false`
    - 한국어로 같은 질문 3개를 던지고, `--verbose`가 출력하는 `eval rate`(tokens/s)를 적는다.
-4. Q8 모델 실행: `ollama run qwen2.5-coder:7b-instruct-q8_0 --verbose`
+4. Q8 모델 실행: `ollama run qwen3:8b-q8_0 --verbose --think=false`
    - 같은 질문으로 반복한다.
 5. 각 모델이 GPU와 CPU에 얼마나 올라갔는지 확인: `ollama ps`
 
-- 태그 이름은 https://ollama.com/library/qwen2.5-coder/tags 에서 확인한다.
+- 모델: Qwen3 8B (2025-04, Apache 2.0, 한국어 포함 다국어 지원).
+- 파일 크기는 Q4 5.2GB, Q8 8.9GB다. Q4는 VRAM 8GB에 들어가고 Q8은 넘치므로 일부가 CPU로 밀리는 것을 비교할 수 있다.
+- Qwen3는 기본으로 생각(thinking) 출력을 먼저 낸다. 생각 토큰이 섞이면 두 모델의 속도 비교가 어긋나므로 끄고 측정한다. `--think=false`가 동작하지 않으면 질문 끝에 `/no_think`를 붙인다.
+- 태그 목록: https://ollama.com/library/qwen3/tags
 
 ## 결과
 
 | 모델 | VRAM 사용 | `ollama ps` PROCESSOR | eval rate (tokens/s) |
 |---|---|---|---|
-| qwen2.5-coder:7b (Q4) | | | |
-| qwen2.5-coder:7b-instruct-q8_0 | | | |
+| qwen3:8b-q4_K_M | | | |
+| qwen3:8b-q8_0 | | | |
 
 ## 배운 점
 
