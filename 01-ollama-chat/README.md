@@ -20,6 +20,7 @@
 - 파일 크기는 Q4 5.2GB, Q8 8.9GB다. Q4는 VRAM 8GB에 들어가고 Q8은 넘치므로 일부가 CPU로 밀리는 것을 비교할 수 있다.
 - Qwen3는 기본으로 생각(thinking) 출력을 먼저 낸다. 생각 토큰이 섞이면 두 모델의 속도 비교가 어긋나므로 끄고 측정한다. `--think=false`가 동작하지 않으면 질문 끝에 `/no_think`를 붙인다.
 - 태그 목록: https://ollama.com/library/qwen3/tags
+- 3~5번 측정은 `measure.sh`(Git Bash에서 `bash measure.sh`)로 한 번에 한다. 모델마다 예열 1회 뒤 질문 3개를 돌리고 적재 위치와 VRAM을 기록한다.
 
 ## 결과
 
